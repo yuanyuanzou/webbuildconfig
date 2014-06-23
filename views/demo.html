@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang=en>
+<meta charset="utf-8">
+<title>Web tests</title>
+<head>
+<link rel='stylesheet' href='dist/css/bootstrap.min.css'>
+<link rel='stylesheet' href='dist/css/bootstrap-theme.min.css'>
+<link rel='stylesheet' href='dist/css/home.css'>
+
+<script type="text/javascript" src='dist/js/jquery.js'></script>
+<script type="text/javascript" src='dist/js/jquery.form.js'></script>
+
+<script type="text/javascript" src='dist/js/bootstrap.js'></script>
+<script type="text/javascript" src='dist/js/demoapp.js'></script>
+
+
+<style type="text/css">
+.col-md-12{
+    float: none;
+}
+</style>
+
+</head>
+<body>
+<header>
+    <img src="dist/image/home.bmp" style='height: 45px;' class="img-circle pull-left">
+    <div style= 'font-size: 24px;'> Config the product's image </div>
+    <button id='logout' class='pull-right' style='margin-top: -18px;' >logout</button>
+</header>
+    <div class='container col-md-12' >
+        {% block show_detail %}
+        <form  id='file_form' enctype="multipart/form-data" role="form" >
+        <table class='col-md-12 table table-bordered' style='margin-top: 20px;'>
+            <tr>
+                <td width='33%'>
+                    <select class='factory' style='min-width:120px'>
+                        {% for f in factorys %}
+                        <option id ='{{loop.key}}'>{{loop.key}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+
+                <td width='33%'>
+                    <select class='model' style='min-width:120px'>
+                        {% for f in factorys %}
+                        {% set fname= loop.key %}
+                        {% for m in f %}
+                        <option class='{{fname}}' id ='{{loop.key}}'>{{loop.key}}</option>
+                        {% endfor %}
+                        {% endfor %}
+                    </select>
+                </td>
+                <td width='33%'>
+                    <select class='release' style='min-width:120px'>
+                        {% for f in factorys %}
+                        {% set fname= loop.key %}
+                        {% for m in f %}
+                        {% set mname= loop.key %}
+                        {% for i in m %}
+                        <option href='{{i.path}}' class='{{mname}}' id ='{{i.path}}'>{{i.name}}</option>
+                        {% endfor %}
+                        {% endfor %}
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+
+        </table>
+        <div id='detail'>
+      
+        </div>
+        <div id='submit'>
+        </div>
+        </form>
+        {% endblock %}
+
+        {% block show_wait%}
+        <div id="waitdialog">
+            <div id='waitdialog_con'>
+                <div class="alert alert-warning">Waiting the building finished...      <img width='40px' src="images/loading.gif"></div>
+            </div>
+        </div>
+        {% endblock %}
+
+    </div>
+
+</body>

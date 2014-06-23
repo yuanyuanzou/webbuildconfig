@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=en>
+<meta charset="utf-8">
+<title>Web tests</title>
+<head>
+<link rel='stylesheet' href='dist/css/bootstrap.min.css'>
+<link rel='stylesheet' href='dist/css/bootstrap-theme.min.css'>
+<link rel='stylesheet' href='dist/css/home.css'>
+
+
+<script type="text/javascript" src='dist/js/jquery.js'></script>
+<script type="text/javascript" src='dist/js/bootstrap.js'></script>
+
+
+</head>
+<body> 
+<header>
+    <img src="dist/image/home.bmp" style='height: 45px;' class="img-circle pull-left">
+    <div style= 'font-size: 24px;'> Config the product's image </div>
+</header>
+  <div class='container col-md-12' >
+    <div class='well col-md-6 col-md-offset-3' style='margin-top: 100px;'>
+      <table class='table table-bordered'>
+        <tr>
+          <td>
+            <form method="post" role="form">
+              <div class="form-group">
+                <label for="Username">Username</label>
+                <input name='user[name]' type="text" class="form-control" id="Username" placeholder="Enter Username" >
+                {% block errorname%}
+                {% endblock%}
+              </div>
+              <div class="form-group">
+                <label for="Password">Password</label>
+                <input name='user[password]' type="password" class="form-control" id="Password" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-default btn-success" style='width:100%' >Login</button>
+              {% block error %}
+                <h6> {{ error }} </h6>
+              {% endblock%}
+            </form>
+            <a class="pull-right" href="/regist">regist</a>
+          </td>
+        </tr>
+      </table>
+    </div>    
+  </div>
+</body>

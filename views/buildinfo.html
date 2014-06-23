@@ -1,0 +1,10 @@
+{% extends 'demo.html' %}
+
+{% block show_detail%}
+    <div class='well col-md-6 col-md-offset-3' style='margin-top: 100px;'>
+        <h3> The new image have been builded successful.</h3> <a download="{{imgpath}}" href='{{imgpath}}'>Click right mouse and save it</a>
+        <br>
+        <a href="javascript: history.back();">返回</a>
+    </div>    
+
+{% endblock %}
